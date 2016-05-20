@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>不定宽高的</title>
+</head>
+<style>
+#div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    background-color: red;
+}
+
+.leftBox {
+    width: 100px;
+    height: 200px;
+    background-color: #ccc;
+    position: fixed;
+    top: 50%;
+    left: -100px;
+    margin-top: -100px;
+}
+
+.leftBtn {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    margin-top: -40px;
+    font: 14px/20px "宋体";
+    width: 20px;
+    height: 80px;
+    background-color: red;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.rightBox {
+    width: 100px;
+    height: 200px;
+    background-color: #ccc;
+    position: fixed;
+    top: 50%;
+    right: -100px;
+    margin-top: -100px;
+}
+
+.rightBtn {
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    margin-top: -40px;
+    font: 14px/20px "宋体";
+    width: 20px;
+    height: 80px;
+    background-color: red;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+}
+</style>
+
+<body>
+    <div class="leftBox">
+        <div class="leftBtn">分享到</div>
+    </div>
+    <div id="div">不到宽高水平和垂直的居中</div>
+    <div class="rightBox">
+        <div class="rightBtn">菜单栏</div>
+    </div>
+</body>
+<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+    $('.leftBox').hover(function() {
+        $('.leftBox').animate({
+            left: '0px'
+        });
+    }, function() {
+        $('.leftBox').animate({
+            left: '-100px'
+        });
+    });
+    $('.rightBox').hover(function() {
+        $(this).animate({
+            right: '0px'
+        });
+    }, function() {
+        $(this).animate({
+            right: '-100px'
+        });
+    });
+});
+</script>
+
+</html>

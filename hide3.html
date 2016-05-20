@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jq手风琴效果</title>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    body {
+        background: #ccc;
+    }
+    
+    div {
+        width: 660px;
+        height: 254px;
+        border: 1px solid #ccc;
+        margin: 50px auto;
+    }
+    
+    ul {
+        width: 5000px;
+    }
+    
+    ul li.active {
+        width: 550px;
+    }
+    
+    ul li {
+        width: 40px;
+        height: 254px;
+        float: left;
+        position: relative;
+        overflow: hidden;
+        transition: 2s;
+    }
+    
+    ul li div {
+        float: left;
+    }
+    .first {
+        width: 60px;
+        height: 244px;
+        padding-top: 10px;
+        border-right: 1px solid #fff;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    ul img {
+        width: 550px;
+        height: 254px;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li class="active">
+                <div class="first">这是第一个</div>
+                <div><img src="img/bg1.jpg" /></div>
+            </li>
+            <li>
+                <div class="first">这是第二个</div>
+                <div><img src="img/bg1.jpg" /></div>
+            </li>
+            <li>
+                <div class="first">这是第三个</div>
+                <div><img src="img/bg1.jpg" /></div>
+            </li>
+            <li>
+                <div class="first">这是第四个</div>
+                <div><img src="img/bg1.jpg" /></div>
+            </li>
+        </ul>
+    </div>
+</body>
+ <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('ul li').click(function(){
+			$(this).addClass('active').siblings().removeClass('active');
+		});
+	})
+</script>
+</html>

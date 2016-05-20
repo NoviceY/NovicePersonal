@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="cmn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js天猫的淡入淡出效果</title>
+   <style type="text/css">
+
+.out {
+    border: 2px solid black;
+    margin: 10px 0 0 50px;
+    width: 260px;
+    height: 260px;
+    position: relative;
+}
+
+.out .img li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.out .num {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 10px;
+    left: 0;
+    font-size: 0px;
+}
+
+.out .num li {
+    font-size: 14px;
+    margin-left: 4px;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    background-color: #ccc;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.out:hover .leftbtn,
+.out:hover .rightbtn {
+    display: block;
+}
+
+.leftbtn,
+.rightbtn {
+    position: absolute;
+    color: #FFF;
+    top: 50%;
+    cursor: pointer;
+    margin-top: -10px;
+    display: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.leftbtn {
+    left: 0;
+}
+
+.rightbtn {
+    right: 0;
+}
+.out ul li:nth-child(1){background-color: #000}
+.out ul li:nth-child(2){background-color: #222}
+.out ul li:nth-child(3){background-color: #333}
+.out ul li:nth-child(4){background-color: #444}
+.out .num li.active {
+    background-color: red;
+}
+
+
+   </style>
+    
+</head>
+
+<body>
+        <div class="right" style="width: 85%">
+            <div class="out">
+                <ul class="img">
+                    <li>
+                        <a href="javascript:;">11111111第一个</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">2222222222222第二个</a>
+                    </li>
+                    <li>
+                         <a href="javascript:;">3333333333333第三个</a>
+                    </li>
+                    <li>
+                         <a href="javascript:;">44444444444444第四个</a>
+                    </li>
+                </ul>
+                <ul class="num">
+                    <!-- 用js自动生成  就只写一个ul就可以了
+                    <li class="active">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li> -->
+                </ul>
+                <div class="leftbtn"> 左</div>
+                <div class="rightbtn">右</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        //相当于轮播的图片淡入淡出效果
+        // 代码初始化
+        var $length = $('.img li').length;
+        for (var i = 0; i < $length; i++) {
+            var li = "<li>" + i + "</li>";
+            $('.num').append(li);
+        }
+        var i = 0;
+        $('.img li').eq(0).show();
+        $('.num li').eq(0).addClass('active');
+        $('.num li').mouseover(function() {
+            var $index = $(this).index()
+            $(this).addClass('active').siblings().removeClass('active');
+            $('.img li').eq($index).stop().fadeIn(100).siblings().stop().fadeOut(100);
+            i = $index; //统一i和$index
+        });
+        // 定时器自动淡入淡出
+
+        var t = setInterval(moveR, 2000);
+        // 向右走
+        function moveR() {
+            i++;
+            if (i == $length) {
+                i = 0;
+            }
+            $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+            $('.img li').eq(i).fadeIn(300).siblings().fadeOut(300);
+        }
+        // 向左走
+        function moveL() {
+            i--;
+            if (i == -1) {
+                i = $length - 1;
+            }
+            $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+            $('.img li').eq(i).fadeIn(300).siblings().fadeOut(300);
+        }
+        // 清除定时器 hover的时候将图片定住
+        $('.out').hover(function() {
+            clearInterval(t);
+        }, function() {
+            t = setInterval(moveR, 2000)
+        });
+        //向左向右点击事件
+        $('.out .leftbtn').click(function() {
+            moveL();
+        });
+        $('.out .rightbtn').click(function() {
+            moveR();
+        });
+    });
+    </script>
+</body>
+
+</html>
