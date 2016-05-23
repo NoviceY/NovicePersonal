@@ -23,7 +23,7 @@ $(function() {
     $('#selected1').change(function() {
         var t = $('#selected1').val();
         $.ajax({
-            type: 'POST',
+            type: 'get',
             url: 'json.txt',
             data: {
                 't': t
