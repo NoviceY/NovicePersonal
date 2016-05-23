@@ -57,8 +57,8 @@
             <a class="exercise" href="hide3.html">css3练</a>
             <a class="exercise" href="fadeIn.html">轮播</a>
             <a class="exercise" href="wfbannar.html">无缝轮播</a>
-            <a class="exercise" href="javascript:;">练习1</a>
-            <a class="exercise" href="javascript:;">练习2</a>
+            <a class="exercise" href="flex.html">弹性盒</a>
+            <a class="exercise" href="css3背景滚动.html">css3背景</a>
             <a class="exercise" href="javascript:;">练习1</a>
             <a class="exercise" href="javascript:;">练习2</a>
             <a class="exercise" href="javascript:;">练习1</a>
@@ -105,7 +105,7 @@
         </div>
         <div class="box clearfix" style="border-bottom: none;">
             <ul class="my">
-                <li><a class="bkgda" href="javascript:;">个人网站</a></li>
+                <li><a class="bkgda" href="resume1.html">个人简历</a></li>
                 <li>心仪职位：Web前端工程师</li>
                 <li>期望工作地点：成都</li>
             </ul>
@@ -133,7 +133,7 @@ $(function() {
             return '#' + Math.floor(Math.random() * 16777215).toString(16);
         }
         $(this).css('backgroundColor', getRandomColor())
-    }, function() {});
+    }, function() { $(this).css('backgroundColor', '#000')});
     //所有的a标签的透明效果
     $('a').hover(function() {
         starMove(this, 'opacity', 100);

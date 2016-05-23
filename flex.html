@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>弹性盒模型</title>
+</head>
+<style type="text/css">
+	.box{width: 80%;height: 80%;background-color: #ccc;}
+	.item{width: 60px;height:60px;border-radius: 50%;background-color: red;text-align: center;font: 14px/60px "宋体";}
+</style>
+<body >
+    <div class="box" style="display: flex; flex-direction: column-reverse;justify-content: space-between;align-items: flex-end;">
+        <span class="item">111</span><span class="item">222</span>
+    </div>
+     <div class="box" style="display: flex; flex-direction: row-reverse;justify-content: space-between;align-items: flex-end;">
+        <span class="item">111</span><span class="item">222</span>
+    </div>
+</body>
+
+</html>
