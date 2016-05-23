@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>公告滚动</title>
+    <style type="text/css">
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+    
+    .clearfix:after {
+        clear: both;
+    }
+    
+    .clearfix {
+        *zoom: 1;
+        /*IE/7/6*/
+    }
+    
+    #gunLeft {
+        overflow: hidden;
+        padding: 0;
+        margin: 0 auto;
+        width: 400px;
+        border: 2px solid #000;
+        height: 100px;
+        position: relative;
+    }
+    
+    #gunLeft .news2 {
+        position: absolute;
+        top: 0;
+        left: 0px;
+        margin: 0;
+        padding: 0;
+        font-size: 0px;
+        list-style: none;
+    }
+    
+    #gunLeft .news2 li {
+        float: left;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .class11 {
+        background-color: #ccc
+    }
+    
+    .class12 {
+        background-color: #fff
+    }
+    
+    .class13 {
+        background-color: #000
+    }
+    
+    .class13 {
+        background-color: #aaa
+    }
+    </style>
+</head>
+
+<body>
+<p>还是有问题</p>
+    <div id="gunLeft">
+        <ul class="news2 clearfix">
+            <li class="class11"></li>
+            <li class="class12"></li>
+            <li class="class13"></li>
+            <li class="class14"></li>
+        </ul>
+    </div>
+</body>
+<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+    var $left = $('#gunLeft .news2');
+    var $timer2 = null;
+    var speed = -2;
+    // 克隆一个并动态获得宽度赋值
+    $left.append($left.find('li').clone());
+    var $l = parseInt($left.find('li').css("width"));
+    var w = $left.find('li').length * $l;
+    $left.css("width", w);
+    $left.hover(function() {
+        clearInterval($timer2); //当鼠标在滚动区域中时,清除定时器   
+    }, function() {
+        //离开时滚动
+        $timer2 = setInterval(function() {
+            var l = parseInt($left.css("left"));
+            if (Math.abs(l) > (w / 2) - $l) {
+                $left.css('left', 0);
+            } else {
+               $left.get(0).style.left=$left.get(0).offsetLeft+speed+'px';
+            }
+        }, 30)
+    }).trigger('mouseleave');
+
+    function move(obj, Itarget) {
+        clearInterval(obj.timer);
+        var speed = (Itarget - obj.offsetWidth) / 9;
+        //最主要的是将speed每次都重新赋值，让其速度变化
+        speed = speed > 0 ? speed = Math.ceil(speed) : Math.floor(speed); //速度取整不然最后小数的时候不跑
+        obj.timer = setInterval(function() {
+            if (obj.offsetWidth == Itarget) {
+                clearInterval(obj.timer);
+            } else {
+                obj.style.width = obj.offsetWidth + speed + 'px'; //对left进行变化
+            }
+        }, 30)
+    }
+});
+</script>
+
+</html>

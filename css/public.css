@@ -1,0 +1,156 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+};
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+    /*IE/7/6*/
+}
+
+a {
+    list-style: none;
+    color: #fff;
+    text-decoration: none;
+}
+a:hover{text-decoration: underline;}
+body {
+    font: 12px/16px "宋体";
+    color: #ac8b72;
+    background: url(../img/bg.jpg) repeat;
+    line-height: 18px;
+}
+
+
+/*header begin*/
+
+#header {
+    width: 980px;
+    height: 340px;
+    background-image: url(../img/headerbg.jpg);
+    margin: 0 auto;
+    padding: 5px 0 0 0;
+}
+
+.header-top {
+    margin: 0 0 0 60px;
+}
+
+.header-top a {
+    display: inline-block;
+    text-align: center;
+    font: 26px/85px "宋体";
+    width: 85px;
+    height: 85px;
+    margin-left: 130px;
+    border: 1px solid rgba(147, 123, 113, 0.5);
+    border-radius: 50%;
+    background: -webkit-radial-gradient(#E5AE82, #2D1C15);
+    background: -moz-radial-gradient(#2D1C15, #FFF);
+    background: -o-radial-gradient(#2D1C15, #FFF);
+    background: radial-gradient(#2D1C15, #FFF);
+    transition: 1s;
+}
+
+.header-top a:hover {
+    background: -webkit-radial-gradient(#FFF, #2D1C15);
+    background: -moz-radial-gradient(#FFF, #2D1C15);
+    background: -o-radial-gradient(#FFF, #2D1C15);
+    background: radial-gradient(#FFF, #2D1C15);
+}
+
+#header .header-bootom {
+    margin: 110px 0 0 0;
+    text-align: center;
+}
+
+#header .header-bootom p:nth-child(1),.header-bootom1{
+    color: #990000;
+    font: 36px/36px "宋体";
+}
+#header .header-bootom p:nth-child(2),.header-bootom2{
+    margin-top: 25px;
+    color: #fff;
+    font: 26px/26px "宋体";
+}
+
+
+/*header end*/
+
+
+/*footer begin*/
+
+#footer {
+    height: 170px;
+    margin: 10px auto;
+    background: url(../img/footerbg.png) no-repeat center;
+    padding-top: 40px;
+}
+
+#footer span {
+    display: block;
+    width: 140px;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 auto;
+}
+
+#footer a {
+    color: black;
+}
+
+#footer span a {
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+}
+
+#footer span a:hover {
+    text-decoration: underline;
+}
+
+#footer hr {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#footer p {
+    text-align: center;
+    color: #000;
+    line-height: 20px;
+}
+
+
+/*footer end*/
+
+#sideBar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    width: 50px;
+
+}
+#sideBar .sideTop {
+    display: block;
+    font: bold 28px/36px "宋体";
+    transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+}

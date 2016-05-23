@@ -1,0 +1,65 @@
+@charset "utf-8";
+#article {
+    width: 980px;
+    margin: 0 auto;
+    color: #CC3300;
+}
+
+#article div {
+    margin: 10px auto;
+    width: 825px;
+    height: 235px;
+    background-image: url(../img/tbbg.png);
+}
+
+.table {
+    width: 100%;
+}
+
+.table caption {
+    font-size: 28px;
+    line-height: 35px;
+    height: 35px;
+}
+
+.table tbody tr th {
+    font: bold 18px/36px "宋体";
+    color: black;
+}
+
+.table tbody tr td {
+    font: 18px/36px "宋体";
+    color: black;
+}
+
+.evaluation h2 {
+    font: 28px/35px "宋体";
+    text-align: center;
+}
+
+.evaluation p {
+    color: black;
+    margin-left: 5px;
+    font: 18px/32px "宋体";
+    text-indent: 2em;
+}
+
+.experience h2 {
+    font: 28px/35px "宋体";
+    text-align: center;
+   
+}
+
+.experience ul {
+    margin-left: 28px;
+}
+
+.experience ul li {
+    font: 18px/38px "宋体";
+    color: black;
+    list-style-type: disc;
+}
+.experience ul li a{
+    color: black;
+    display: initial;
+}

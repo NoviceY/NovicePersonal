@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="cmn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js</title>
+    <style type="text/css">
+    .gun {
+        width: 160px;
+        height: 200px;
+        margin: 10px 0 0 50px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .gun .gunimg {
+        width: 5000px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .gun .gunimg li {
+        float: left;
+    }
+    
+    .gun .gunnum {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        left: 50%;
+        font-size: 0px;
+        cursor: pointer;
+    }
+    
+    .gun .gunnum li {
+        width: 15px;
+        height: 15px;
+        color: #FFF;
+        border-radius: 50%;
+        background-color: #fff;
+        display: inline-block;
+        text-align: center;
+        margin-left: 5px;
+    }
+    
+    .gun .gunnum li.active {
+        background-color: red;
+    }
+    .gunbtnleft{position: absolute;left: 0;top: 50%;}
+    .gunbtnright{position: absolute;right: 0;top: 50%;}
+    </style>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        // 无缝滚动 最重要的
+        var $i = 0;
+        var $length = $('.gun .gunimg li').length;
+        var clone = $('.gun .gunimg li').first().clone();
+        $('.gun .gunimg').append(clone);
+        // 向右按钮走
+        $('.gun .gunbtnright').click(function() {
+            $i++;
+            if ($i == $length) {
+                $('.gun .gunimg').css({
+                    left: 0
+                });
+                $i = 0;
+            }
+            movelunbo();
+        });
+
+        function movelunbo() {
+            $('.gun .gunimg').stop().animate({
+                left: -160 * $i
+            }, 500);
+            $('.gun .gunnum li').eq($i).addClass('active').siblings().removeClass('active');
+        }
+        // 向左按钮走
+        $('.gun .gunbtnleft').click(function() {
+            $i--;
+            if ($i == -1) {
+                $('.gun .gunimg').css({
+                    left: -($length - 1) * 160
+                });
+                $i = $length - 1;
+            }
+            movelunbo();
+        });
+        // 鼠标移到到上面
+        $('.gun .gunnum li').mouseover(function() {
+            var $index = $(this).index();
+            $i = $index;
+            movelunbo();
+        });
+        // 定时
+        var t = setInterval(function() {
+                $i++;
+                if ($i == $length) {
+                    $('.gun .gunimg').css({
+                        left: 0
+                    });
+                    $i = 0;
+                }
+                movelunbo();
+            }, 1000)
+            // 移出定时
+        $('.gun').hover(function() {
+            clearInterval(t);
+        }, function() {
+            t = setInterval(function() {
+                $i++;
+                if ($i == $length) {
+                    $('.gun .gunimg').css({
+                        left: 0
+                    });
+                    $i = 0;
+                }
+                movelunbo();
+            }, 1000)
+        });
+    });
+    </script>
+</head>
+
+<body style="background-color: #ccc;">
+    <div class="gun">
+        <ul class="gunimg">
+            <li>
+                <a href="javascript:;"><img src="img/Novice.png" alt=""></a>
+            </li>
+            <li>
+                <a href="javascript:;"><img src="img/recommend.png" alt=""></a>
+            </li>
+            <li>
+                <a href="javascript:;"><img src="img/Novice.png" alt=""></a>
+            </li>
+            <li>
+                <a href="javascript:;"><img src="img/recommend.png" alt=""></a>
+            </li>
+        </ul>
+        <ul class="gunnum">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div class="gunbtnleft">&lt;&lt;</div>
+        <div class="gunbtnright">&gt;&gt;</div>
+    </div>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        background: #F5FAFD
+    }
+    
+    .mvBox {
+        height: 15px;
+        background: #F5FAFD url(img/test2.jpg) no-repeat left center;
+        width: 471px;
+        position: relative;
+        padding: 0 30px;
+        margin: 0 auto;
+    }
+    
+    .mvBtn {
+        position: absolute;
+        left: 50px;
+        top: 0;
+    }
+    
+    .mvTxt {
+        height: 50px;
+        line-height: 50px;
+        width: 531px;
+        text-align: center;
+        font-size: 30px;
+        color: #29B6FF;
+        font-family: Arial;
+        margin: 0 auto;
+    }
+    
+    .mvSq {
+        font-size: 25px;
+    }
+    </style>
+    <div style="background:#F5FAFD; padding:50px;">
+        <!--效果开始-->
+        <div class="mvTxt">Loading<span class="mvSq">.</span><span class="mvSq">.</span><span class="mvSq">.</span></div>
+        <div class="mvBox">
+            <img class="mvBtn" src="img/test1.jpg" />
+        </div>
+        <script language="javascript">
+        var delVal = 20; //开始的位置
+
+        function autoMove() {
+            delVal++;
+            if (delVal > 450) {
+                delVal = 50;
+            }
+            $(".mvBtn").css("left", delVal); //移动.mvBtn里面是张图片
+        }
+        setInterval(autoMove, 10); //定时器  移动的
+        //loading的后面3个一直变的点点
+        var deNum = 0;
+
+        function autoTsq() {
+            $(".mvSq").css("color", "#F5FAFD");
+            setTimeout(function() {
+                $(".mvSq").eq(0).css("color", "#29B6FF")
+            }, 0);
+            setTimeout(function() {
+                $(".mvSq").eq(1).css("color", "#29B6FF")
+            }, 500);
+            setTimeout(function() {
+                $(".mvSq").eq(2).css("color", "#29B6FF")
+            }, 1000);
+        }
+        setInterval(autoTsq, 1500); //3个点点的定时器
+        </script>
+    </div>
+</body>
+
+</html>
