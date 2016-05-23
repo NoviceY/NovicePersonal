@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="cmn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js特效实验</title>
+    <style type="text/css">
+     * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+    
+    .clearfix:after {
+        clear: both;
+    }
+    
+    .clearfix {
+        *zoom: 1;
+        /*IE/7/6*/
+    }
+    
+    .left {
+        float: left;
+        margin: 50px;
+    }
+    .left ul li{background-color: #ccc;}
+    .left ul li ul li{float: none;background-color: #555;color: #FFF;}
+    .left ul li ul li ul li{float: none;background-color: #000;color: #FFF;}
+    .hide {
+        display: none;
+    }
+.showpic {float: right;}
+    </style>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        //只定义了一个class的可复用ul侧边栏
+        $('.sidebar li').hover(function() {
+            $(this).children('ul').show(300);
+            $(this).children('ul li').hover(function() {
+                $(this).children('ul').show(300);
+            });
+        }, function() {
+            $(this).children('ul').hide(500);
+        });
+
+        //只定义了一个class的可复用ul可展示图片的块
+        $('.showpic li').hover(function() {
+            $(this).find('div').slideDown();
+            $(this).siblings().find('div').slideUp();
+        });   
+
+    });
+    </script>
+</head>
+
+<body>
+    <div>
+        <div class="left clearfix" style="width: 15%">
+            <ul class="sidebar">
+                <li>侧边导航
+                    <ul style="display: none;">
+                        <li>侧边导航1</li>
+                        <li>侧边导航1</li>
+                        <li>侧边导航1
+                            <ul style="display: none;">
+                                <li>侧边导航2</li>
+                                <li>侧边导航2</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>侧边导航</li>
+                <li>侧边导航
+                    <ul style="display: none;">
+                        <li>侧边导航1</li>
+                        <li>侧边导航1</li>
+                        <li>侧边导航1
+                            <ul style="display: none;">
+                                <li>侧边导航2</li>
+                                <li>侧边导航2</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+        </div>
+        <ul class="showpic ">
+                <li>
+                    <p>新闻之内的什么</p>
+                    <div><img src="img/Novice.png" alt=""></div>
+                </li>
+                <li>
+                    <p>新闻之内的什么</p>
+                    <div class="hide"><img src="img/Novice.png" alt=""></div>
+                </li>
+                <li>
+                    <p>新闻之内的什么</p>
+                    <div class="hide"><img src="img/Novice.png" alt=""></div>
+                </li>
+            </ul>
+    </div>
+</body>
+
+</html>
