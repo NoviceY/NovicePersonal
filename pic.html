@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+body {
+    background: url(../img/bg1.jpg) no-repeat top center fixed;
+    background-size: 100% auto;
+}
+
+.content {
+    width: 900px;
+    height: 1000px;
+    margin: 100px auto;
+    position: relative;
+}
+
+img {
+    z-index: 1;
+    width: 25%;
+    height: auto;
+    position: absolute;
+    padding: 10px 10px 15px 10px;
+    background: #fff;
+    border: 1px solid #CCC;
+    /* 动画的时间 */
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+img:hover {
+    z-index: 2;
+    /*缩放比*/
+    transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    box-shadow: -10px 10px 20px #000000;
+    -moz-box-shadow: -10px 10px 20px #000000;
+    -webkit-box-shadow: -10px 10px 20px #000000;
+}
+
+.pic1 {
+    left: 50px;
+    top: 50px;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    transform: rotate(20deg);
+}
+
+.pic2 {
+    left:400px;
+    top: 60px;
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+}
+
+.pic3 {
+    left: 600px;
+    top: 150px;
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}
+
+.pic4{
+    left: 50px;
+    top: 300px;
+    -webkit-transform: rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    transform: rotate(-40deg);
+}
+
+.pic5 {
+    left: 400px;
+    top: 300px;
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+}
+
+.pic6 {
+    left: 600px;
+    top: 300px;
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+}
+</style>
+
+<body>
+    <div class="content">
+        <img class="pic1" src="img/bg.jpg" />
+        <img class="pic2" src="img/bg1.jpg" />
+        <img class="pic3" src="img/bg2.jpg" />
+        <img class="pic4" src="img/bg3.jpg" />
+        <img class="pic5" src="img/bg4.jpg" />
+        <img class="pic6" src="img/bg5.jpg" />
+    </div>
+</body>
+
+</html>

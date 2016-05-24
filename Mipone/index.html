@@ -97,6 +97,61 @@
                 </div>
             </div>
         </div>
+         <div class="tpbtn active">
+        <a class="tpbtna" href="javascript:;">美</a>
+        <div class="tpicons clearfix" style="display:none;">
+            <ul class="clearfix">
+                <li class="logis">
+                    <a href="adviser.html"></a><span class="bg"></span></li>
+                <li class="ww">
+                    <a href="agent.html"></a><span class="bg"></span></li>
+                <li class="individ">
+                    <a href="brand.html"></a><span class="bg"></span></li>
+                <li class="car">
+                    <a href="product.html"></a><span class="bg"></span></li>
+                <li class="search">
+                    <a href="renzhen.html"></a><span class="bg"></span></li>
+                <li class="remove">
+                    <a href="javascript:;"></a><span class="bg"></span></li>
+                <li class="tplogo">
+                    <a href="index.html"></a><span class="bg"></span></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(function() {
+        $('.tpbtn').click(function() {
+            $('.tpbtna').toggleClass("active");
+            $('.tpicons').toggle();
+            $('.tpicons li').removeClass("active");
+        });
+        $('.tpicons li').click(function() {
+            $(this).addClass('active');
+            $('.tpicons').hide(500);
+        });
+        //阻止冒泡事件
+        $(".tpicons").click(function(event) {
+            event.stopPropagation();
+        });
+        $(".tpbtn").click(function(event) {
+            event.stopPropagation();
+        });
+        $('.container-fluid').click(function() {
+            $('.tpicons').hide(500);
+            if ($('.tpicons').css('display') == "none") {
+                $('.tpbtna').removeClass('active');
+            };
+        });
+        $('.remove').click(function(){
+            $('#collapseOne').toggleClass('in');
+        });
+        var timer = setInterval(function() {
+            if ($('.tpicons').css('display') == "none") {
+                $('.tpbtna').removeClass('active');
+            };
+        }, 100);
+    });
+    </script>
     </div>
 </body>
 
