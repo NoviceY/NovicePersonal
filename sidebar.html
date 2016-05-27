@@ -63,11 +63,17 @@
     
     #sidebar ul .er {
         display: none;
-        background-color: #fff;
+        color: #fff;
+        background-color: #999;
     }
     
     #sidebar ul .er li {
         font: 14px/28px "微软雅黑";
+    }
+    
+    .er li .san {
+        background-color: red;
+        display: none;
     }
     </style>
 </head>
@@ -78,18 +84,20 @@
         <h4>菜单栏</h4>
         <ul>
             <li><a href="javascript:;">火遁</a></li>
-            <li><a class="active" href="javascript:;">火遁</a></li>
-            <li><a href="javascript:;">火遁</a>
+            <li><a href="javascript:;">火遁</a></li>
+            <li><a href="javascript:;">火遁2</a>
                 <ul class="er">
                     <li><a href="javascript:;">水遁</a></li>
                     <li><a href="javascript:;">水遁</a></li>
-                    <li><a href="javascript:;">水遁</a></li>
+                    <li><a href="javascript:;">水遁</a>
+                        <ul class="san">
+                            <li><a href="javascript:;">土遁</a></li>
+                            <li><a href="javascript:;">金遁</a></li>
+                            <li><a href="javascript:;">雷遁</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
-            <li><a href="javascript:;">火遁</a></li>
-            <li><a href="javascript:;">火遁</a></li>
-            <li><a href="javascript:;">火遁</a></li>
-            <li><a href="javascript:;">火遁</a></li>
             <li><a href="javascript:;">火遁</a></li>
         </ul>
     </div>
@@ -101,6 +109,11 @@
             $(this).parents().siblings().find(".er").hide(300);
             $(this).siblings(".er").toggle(300);
         })
+        $('.er a').click(function() {
+            $(this).addClass("active").parent().siblings().find("a").removeClass("active");
+            $(this).parent().siblings().find(".er").hide(300);
+            $(this).siblings(".san").toggle(300);
+        });
     })
     </script>
 </body>

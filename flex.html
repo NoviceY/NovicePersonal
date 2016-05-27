@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>弹性盒模型</title>
+</head>
+<style type="text/css">
+	.box:nth-child(2n){width: 80%;height: 80%;background-color: #ccc;}
+	.box:nth-child(2n-1){width: 80%;height: 80%;background-color: #999;}
+	.item{width: 60px;height:60px;border-radius: 50%;background-color: red;text-align: center;font: 14px/60px "宋体";}
+</style>
+<body >
+   <div class="box" style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-between;">
+        <span class="item">111</span><span class="item">3333</span>
+    </div>
+     <div class="box" style="display: flex; flex-direction: row-reverse;justify-content: space-between;">
+        <span class="item">111</span><span class="item">222</span>
+    </div>
+     <div class="box" style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-between;">
+        <span class="item">111</span><span class="item">222</span><span class="item">3333</span>
+         <span class="item">444</span><span class="item">555</span><span class="item">666</span>
+          <span class="item">777</span><span class="item">888</span><span class="item">999</span>
+           <span class="item">111</span><span class="item">222</span><span class="item">3333</span> <span class="item">111</span><span class="item">222</span><span class="item">3333</span> <span class="item">111</span><span class="item">222</span><span class="item">3333</span> 
+    </div>
+     <div class="box" style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-between;">
+        <span class="item">111</span><span class="item">3333</span>
+    </div>
+      <div class="box" style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-between;">
+        <span class="item">111</span><span class="item">3333</span>
+    </div>
+
+</body>
+
+</html>

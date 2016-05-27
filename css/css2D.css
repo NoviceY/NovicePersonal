@@ -1,0 +1,293 @@
+@charset "utf-8";
+/*第一种效果*/
+
+.border1 {
+    background-color: #fe7253;
+    width: 360px;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    /*所有变化0.4秒内完成*/
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.border1 .border1_img {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    opacity: 1;
+    overflow: hidden
+}
+
+.border1:hover .border1_img {
+    position: absolute;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    opacity: 0.6;
+}
+
+.border1 .border1_caption {
+    color: #fff;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    overflow: hidden
+}
+
+.border1 .border1_caption::before,
+.border1 .border1_caption::after {
+    position: absolute;
+    content: '';
+    opacity: 0;
+    -webkit-transition: opacity 0.4s, -webkit-transform .4s;
+    -moz-transition: opacity 0.4s, -moz-transform .4s;
+    -o-transition: opacity 0.4s, -o-transform .4s;
+    transition: opacity 0.4s, transform .4s
+}
+
+.border1 .border1_caption::before {
+    top: 8%;
+    right: 10%;
+    bottom: 8%;
+    left: 10%;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    -webkit-transform: scale(0, 1);
+    -moz-transform: scale(0, 1);
+    -o-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0
+}
+
+.border1 .border1_caption::after {
+    top: 8%;
+    right: 10%;
+    bottom: 8%;
+    left: 10%;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    -webkit-transform: scale(1, 0);
+    -moz-transform: scale(1, 0);
+    -o-transform: scale(1, 0);
+    transform: scale(1, 0);
+    -webkit-transform-origin: 100% 0;
+    -moz-transform-origin: 100% 0;
+    -o-transform-origin: 100% 0;
+    transform-origin: 100% 0
+}
+
+.border1:hover .border1_caption::after,
+.border1:hover .border1_caption::before {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1)
+}
+
+.border1 .border1_caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.border1 .border1_caption_h {
+    font-size: 1.3em;
+    font-weight: 700;
+    text-align: center;
+    width: 80%;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    overflow: hidden;
+    opacity: 1
+}
+
+.border1 .border1_caption_p {
+    font-size: 1em;
+    text-align: center;
+    width: 80%;
+    position: absolute;
+    top: 80%;
+    left: 10%;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    opacity: 0
+}
+
+.border1:hover .border1_caption_p {
+    top: 45%;
+    opacity: 1
+}
+
+
+/*第二种效果*/
+
+.border2 {
+    position: relative;
+    background-color: #fe7253;
+    width: 360px;
+    height: 240px;
+    overflow: hidden;
+    box-sizing: border-box;
+    /*所有变化0.4秒内完成*/
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.border2 .border2_img {
+    display: block;
+    width: 100%;
+    position: relative;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.border2:hover .border2_img {
+    transform: scale(1.2);
+    opacity: 0.6;
+}
+
+.border2 .border2_caption {
+    color: #fff;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    overflow: hidden
+}
+
+.border2 .border2_caption_h {
+    font-size: 1.3em;
+    font-weight: 700;
+    text-align: center;
+    width: 80%;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    overflow: hidden;
+    opacity: 1
+}
+
+.border2 .border2_caption_p {
+    font-size: 1.4em;
+    font-weight: 700;
+    text-align: center;
+    width: 80%;
+    position: absolute;
+    top: 80%;
+    left: 10%;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    overflow: hidden;
+    opacity: 0
+}
+
+.border2:hover .border2_caption_p {
+    opacity: 1;
+    top: 45%;
+}
+
+.border2 .border2_caption::after,
+.border2 .border2_caption::before {
+    position: absolute;
+    content: '';
+    opacity: 0;
+    -webkit-transform: .4s;
+    transition: 0.4s, transform .4s
+}
+
+.border2 .border2_caption::after {
+    top: 8%;
+    right: 10%;
+    bottom: 8%;
+    left: 10%;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    -webkit-transform: scale(1, 0);
+    -moz-transform: scale(1, 0);
+    -o-transform: scale(1, 0);
+    transform: scale(1, 0);
+    -webkit-transform-origin: 100% 0;
+    -moz-transform-origin: 100% 0;
+    -o-transform-origin: 100% 0;
+    transform-origin: 100% 0
+}
+
+.border2 .border2_caption::before {
+    top: 14%;
+    right: 5%;
+    bottom: 14%;
+    left: 5%;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    -webkit-transform: scale(0, 1);
+    -moz-transform: scale(0, 1);
+    -o-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0
+}
+
+.border2:hover .border2_caption::before,
+.border2:hover .border2_caption::after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1)
+}
+.3Dborder1{
+    width: 360px;
+    height: 240px;
+    overflow: hidden;
+     position: relative;
+    box-sizing: border-box;
+}
