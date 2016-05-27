@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>css3的练习</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    a:hover {
+        text-decoration: underline
+    }
+    
+    #main {
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    
+    h3.title {
+        border-bottom: 1px solid #ccc;
+        font: 16px/30px "微软雅黑";
+    }
+    
+    #demo {
+        width: 90%;
+        margin: 10px auto;
+    }
+    
+    #demo .box {
+        float: left;
+        margin: 20px;
+    }
+    
+    img {
+        width: 360px;
+        height: 240px
+    }
+    
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+    
+    .clearfix:after {
+        clear: both;
+    }
+    
+    .clearfix {
+        *zoom: 1;
+        /*IE/7/6*/
+    }
+    </style>
+    <link rel="stylesheet" href="css/css2D.css">
+</head>
+
+<body>
+    <div id="main">
+        <h3 class="title">css3实现hover效果</h3>
+        <div id="demo" class="clearfix">
+            <div class="box">
+                <div class="border1">
+                    <img class="border1_img" src="img/bg2.jpg" alt="Image 01">
+                    <div class="border1_caption">
+                        <h3 class="border1_caption_h">Helloweba</h3>
+                        <p class="border1_caption_p">WEB前端应用教程+演示+源码</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="border2">
+                    <img class="border2_img" src="img/bg2.jpg" alt="Image 01">
+                    <div class="border2_caption">
+                        <h3 class="border2_caption_h">Helloweba</h3>
+                        <p class="border2_caption_p">WEB前端应用教程+演示+源码</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="3Dborder1">
+                    <div class="3Dborder1_inner">
+                        <div class="3Dborder1_img">
+                            <img src="img/bg2.jpg" alt="img01">
+                        </div>
+                        <div class="3Dborder1_caption">
+                            <h3>Helloweba</h3>
+                            <p>WEB前端应用教程+演示+源码</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

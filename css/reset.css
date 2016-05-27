@@ -1,23 +1,127 @@
 @charset "utf-8";
-* {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td ,div{
     margin: 0;
     padding: 0;
 }
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
-body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
-h1, h2, h3, h4, h5, h6{ font-size:100%; }
-address, cite, dfn, em, var { font-style:normal; }
-code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
-small{ font-size:12px; }
-ul, ol { list-style:none; }
-a { text-decoration:none; }
-a:hover { text-decoration:none; }
-sup { vertical-align:text-top; }
-sub{ vertical-align:text-bottom; }
-legend { color:#000; }
-fieldset, img { border:0; }
-button, input, select, textarea { font-size:100%; }
-table { border-collapse:collapse; border-spacing:0; }
+
+body,
+button,
+input,
+select,
+textarea {
+    font: 14px/1.5 tahoma, arial, \5b8b\4f53;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+    font-style: normal;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: couriernew, courier, monospace;
+}
+
+small {
+    font-size: 12px;
+}
+
+input,
+button,
+select,
+textarea {
+    outline: none
+}
+
+
+/*取消谷浏览器的点击边框*/
+
+textarea {
+    resize: none
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    transition: .2s;
+    color: #000
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+legend {
+    color: #000;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
 .clearfix:before,
 .clearfix:after {
     content: "";
@@ -26,10 +130,93 @@ table { border-collapse:collapse; border-spacing:0; }
 
 .clearfix:after {
     clear: both;
-   
 }
 
 .clearfix {
     *zoom: 1;
     /*IE/7/6*/
 }
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt30 {
+    margin-top: 30px !important;
+}
+
+.hide1 {
+    height: 0px;
+    overflow: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+.bgfff {
+    background-color: #fff !important
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.transition {
+    transform: rotate(180deg);
+}
+
+.border-top1 {
+    border-top: 1px solid #FFAC13;
+}
+
+.border-top2 {
+    border-top: 1px solid #83C44E;
+}
+
+.border-top3 {
+    border-top: 1px solid #2196F3
+}
+
+.border-top4 {
+    border-top: 1px solid #E53935
+}
+
+.border-top5 {
+    border-top: 1px solid #00C0A5
+}
+
+.width992 {
+    width: 992px;
+}
+
+.width296 {
+    width:296px !important;
+    
+}
+ .height395{height: 415px !important;padding: 0 !important;}
+ .height220{
+ 	height: 220px !important;
+ }
+ .width240 {
+    width:240px !important;
+    
+}
+.tab-list{margin: 20px 20px 0 0;}
+.tab-list li{
+	font-size: 16px;
+	font-weight: 600;
+    float: left;
+    margin-left: 32px;
+    color: #424242;
+    cursor: pointer;
+}
+.tab-list li.active{
+	color: #FF6700;
+	border-bottom: 2px solid #FF6700;
+}
+.{background-color: #F5F5F5}
