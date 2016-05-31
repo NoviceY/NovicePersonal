@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BSpractice</title>
+</head>
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+
+ .mzm-caret-fixed {
+     position: absolute;
+     /*margin-top:4px;*/
+     right: 20px;
+     top: 15px;
+ }
+.panel-title>[aria-expanded="true"]+.mzm-caret-fixed {
+    border-top: 0;
+    /*border-bottom: 4px dashed;*/
+}
+#uploadFileBtn {
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     left: 0;
+     top: 0;
+     opacity: 0;
+     filter: alpha(opacity=0);
+ }
+ #fileBtnWrap{
+    position: relative;
+    overflow: hidden;
+ }
+</style>
+<script type="text/javascript">
+$(function(){
+    $("#uploadFileBtn").change(function() {
+        var $file = $(this);
+        var fileObj = $file[0];
+        var windowURL = window.URL || window.webkitURL;
+        var dataURL;
+        var $img = $("#avatarPreview");
+        if (fileObj && fileObj.files && fileObj.files[0]) {
+            dataURL = windowURL.createObjectURL(fileObj.files[0]);
+            $img.attr('src', dataURL);
+        } else {
+            dataURL = $file.val();
+            var imgObj = $img[0];
+            imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+            imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+        }
+    });
+});
+     
+</script>
+<body>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+              <a style="width: 100%;display: inline-block;" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                资料编辑
+              </a>
+              <span class="caret mzm-caret-fixed"></span>
+              </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+                <form class="" role="form">
+                    <div class="center-block" style="width:40%">
+                        <div class="thumbnail">
+                            <img width="100" height="100" src="img/test1.jpg" alt="头像" id="avatarPreview">
+                            <div class="caption text-center">
+                                <div id="fileBtnWrap" class="btn btn-primary text-center" role="button">
+                                    更换
+                                    <input type="file" id="uploadFileBtn" name="umAvatar" accept="image/png,image/gif,image/jpeg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon">昵称</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="text" name="umNickname" class="form-control" >
+                    </div>
+                    <br>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon">手机</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="text" name="umTeleNum" class="form-control" >
+                    </div>
+                    <br>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon">Q Q</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="text" name="umQQ" class="form-control">
+                    </div>
+                    <br>
+                    <div class="text-center" style="margin: 10px 0;">
+                        <input id="umEditSubmitBtn" class="btn btn-default" type="button" value="提交">
+                        <input id="umEditCancelBtn" class="btn btn-default" type="button" value="取消">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

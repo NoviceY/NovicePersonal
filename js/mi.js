@@ -88,3 +88,15 @@ $('.site-category ul li').hover(function() {
     $(this).find('div.children').css('width', length * w);
     $(this).find('div.children').toggle();
 }, function() { $(this).find('div.children').toggle(); });
+$(window).scroll(function() {
+    if ($(window).scrollTop() > 200) {
+        $('.scroll').show();
+    } else {
+        $('.scroll').hide();
+    }
+});
+$('.scroll').click(function() {
+    $('html,body').animate({
+        'scrollTop': 0
+    }, 300);
+});

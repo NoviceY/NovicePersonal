@@ -24,7 +24,6 @@ $(function() {
     });
     $(window).scroll(function(){
         if ($(window).scrollTop() > 200) {
-          
             $('.sideTop').fadeIn(300);
         }else{
              $('.sideTop').hide();
