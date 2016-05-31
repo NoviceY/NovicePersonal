@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>css3伪类实现按钮光泽效果</title>
+</head>
+<style type="text/css">
+.btn {
+    width: 160px;
+    height: 40px;
+    border-radius: 5px;
+    background: #4472ff;
+    border: 1px solid #4472ff;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 44px;
+    letter-spacing: .5px;
+    margin: 0;
+    outline: none;
+    padding: 0 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    overflow: hidden;
+    position: relative;
+    /*最主要的是这句让后面依靠*/
+}
+
+.btn input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.btn::after {
+    content: ' ';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    background: linear-gradient(to bottom, rgba(229, 172, 142, 0), rgba(255, 255, 255, 0.5) 50%, rgba(229, 172, 142, 0));
+    transform: rotateZ(60deg) translate(-5em, -9em);
+}
+
+.btn:hover::after,
+.btn:focus::after {
+    animation: sheen 1s forwards;
+    /*只执行一次*/
+}
+
+@keyframes sheen {
+    /*简写只写了最后的*/
+    100% {
+        transform: rotateZ(60deg) translate(1em, 9em);
+    }
+}
+
+.progress {
+    margin-top: 100px;
+    height: 20px;
+    width: 400px;
+    position: relative;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.progress span {
+    line-height: 20px;
+    font-size: 14px;
+    text-align: right;
+    position: absolute;
+    height: 100%;
+    border-radius: 5px;
+    background-color: red;
+}
+</style>
+
+<body>
+    <a class='btn' href="javascript:void(0);">一闪而过点击上传图片
+    <input id="uploadFileBtn" type="file" accept="image/png,image/gif,image/jpeg"></a>
+    <div class="progress"><span></span></div>
+    <div id="div1"></div>
+</body>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    var $w = $('.progress');
+    var $span = $('.progress span');
+    $.ajax({
+        url: "json2.txt",
+        type: "GET",
+        data: {},
+        datatype: 'json',
+        success: function(data) {
+            // alert($w);
+            var $w = parseInt($('.progress').css('width'));
+            var data = JSON.parse(data);
+            var $w = parseFloat(data.width) / 100 * $w;
+            $('.progress span').css('width', $w);
+            $span.html(data.width);
+        }
+    });
+    $("#uploadFileBtn").change(function() {
+        $.ajax({
+            url: "json2.txt",
+            type: "GET",
+            dataType: "json",
+            progress: function(evt) {
+                if (evt.lengthComputable) {
+                    var baifen = parseInt((evt.loaded / evt.total * 100), 10) + "%";
+                    console.log("Loaded " + baifen);
+                    var $progress = ' <div class="progress"><span></span></div>';
+                    $('#div1').append($progress);
+                    var $w = parseInt($('#div1 .progress').css('width'));
+                    var $w = parseFloat(baifen) / 100 * $w;
+                    $('#div1 .progress span').css('width', $w);
+                    $('#div1 span').html(baifen);
+                } else {
+                    console.log("Length not computable.");
+                }
+            },
+            complete: function(data) {
+                console.log("Completed.");
+                alert(data)
+            },
+            // success:function(data){
+            //     alert(data);
+            // }
+        });
+    });
+});
+(function addXhrProgressEvent($) {
+    var originalXhr = $.ajaxSettings.xhr;
+    $.ajaxSetup({
+        progress: function() {
+            // console.log("standard progress callback");
+        },
+        xhr: function() {
+            var req = originalXhr(),
+                that = this;
+            if (req) {
+                if (typeof req.addEventListener == "function") {
+                    req.addEventListener("progress", function(evt) {
+                        that.progress(evt);
+                    }, false);
+                }
+            }
+            return req;
+        }
+    });
+})(jQuery);
+
+// $('.btn').on('click', function() {
+//     var $w = parseInt($('.progress').css('width')) * Math.random();
+//     $('.progress span').css('width', $w);
+// });
+</script>
+
+</html>

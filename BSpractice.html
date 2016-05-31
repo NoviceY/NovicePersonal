@@ -9,33 +9,35 @@
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <style type="text/css">
+.mzm-caret-fixed {
+    position: absolute;
+    /*margin-top:4px;*/
+    right: 20px;
+    top: 15px;
+}
 
- .mzm-caret-fixed {
-     position: absolute;
-     /*margin-top:4px;*/
-     right: 20px;
-     top: 15px;
- }
 .panel-title>[aria-expanded="true"]+.mzm-caret-fixed {
     border-top: 0;
     /*border-bottom: 4px dashed;*/
 }
+
 #uploadFileBtn {
-     width: 100%;
-     height: 100%;
-     position: absolute;
-     left: 0;
-     top: 0;
-     opacity: 0;
-     filter: alpha(opacity=0);
- }
- #fileBtnWrap{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#fileBtnWrap {
     position: relative;
     overflow: hidden;
- }
+}
 </style>
 <script type="text/javascript">
-$(function(){
+$(function() {
     $("#uploadFileBtn").change(function() {
         var $file = $(this);
         var fileObj = $file[0];
@@ -52,11 +54,11 @@ $(function(){
             imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
         }
     });
-});
-     
-</script>
-<body>
 
+});
+</script>
+
+<body>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -83,13 +85,13 @@ $(function(){
                     <div class="input-group has-feedback">
                         <span class="input-group-addon">昵称</span>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <input type="text" name="umNickname" class="form-control" >
+                        <input type="text" name="umNickname" class="form-control">
                     </div>
                     <br>
                     <div class="input-group has-feedback">
                         <span class="input-group-addon">手机</span>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <input type="text" name="umTeleNum" class="form-control" >
+                        <input type="text" name="umTeleNum" class="form-control">
                     </div>
                     <br>
                     <div class="input-group has-feedback">
