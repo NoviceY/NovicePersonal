@@ -110,7 +110,7 @@ $(function() {
     $("#uploadFileBtn").change(function() {
         $.ajax({
             url: "json2.txt",
-            type: "GET",
+            type: "POST",
             dataType: "json",
             progress: function(evt) {
                 if (evt.lengthComputable) {
@@ -123,12 +123,12 @@ $(function() {
                     $('#div1 .progress span').css('width', $w);
                     $('#div1 span').html(baifen);
                 } else {
-                    console.log("Length not computable.");
+                    alert('Length not computable');
                 }
             },
             complete: function(data) {
                 console.log("Completed.");
-                alert(data)
+                // alert(data)
             },
             // success:function(data){
             //     alert(data);
