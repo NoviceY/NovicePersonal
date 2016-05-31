@@ -122,9 +122,9 @@ $(function() {
                     var $w = parseFloat(baifen) / 100 * $w;
                     $('#div1 .progress span').css('width', $w);
                     $('#div1 span').html(baifen);
-                } else {
+                } else { alert('github上面不行？');
                     console.log("Length not computable.");
-                    alert('github上面不行？');
+                   
                 }
             },
             complete: function(data) {
