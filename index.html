@@ -22,7 +22,6 @@
     <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script><![endif]-->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
-    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -114,7 +113,36 @@
     <footer>
         <div>Powered by © 2016 <a class="bkgda" href="javascript:;">XieY</a>.</div>
     </footer>
+    <div class="toolbar">
+        <a  target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=8888888&site=550483506&menu=yes" class="toolbar-item">
+            <span class="toolbar-item-1">
+            <i class="iconfont">&#xe607;</i>
+            <span class="toolbar-item-text">我的<br>QQ<a href="tencent://message/?uin="+'550483506'+""></a></span>
+            </span>
+            <span class="toolbar-item-qq"></span>
+        </a>
+        <a href="javascrpit:;" class="toolbar-item">
+            <span class="toolbar-item-1">
+            <i class="iconfont">&#xe64b;</i>
+            <span class="toolbar-item-text">微信<br>帐号</span>
+            </span>
+            <span class="toolbar-item-weixin"></span>
+        </a>
+        <a href="javascrpit:;" class="toolbar-item">
+            <span class="toolbar-item-1">
+              <i class="iconfont">&#xf0105;</i>
+            <span class="toolbar-item-text">没有<br>帐号</span>
+            </span>
+        </a>
+        <a href="javascrpit:;" class="toolbar-item top">
+            <span class="toolbar-item-1"> 
+             <i class="iconfont">&#xe619;</i>
+            <span class="toolbar-item-text">返回<br>顶部</span>
+            </span>
+        </a>
+    </div>
 </body>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="lib/layer2.2/layer.js"></script>
 <script type="text/javascript">
 $(function() {
@@ -133,12 +161,20 @@ $(function() {
             return '#' + Math.floor(Math.random() * 16777215).toString(16);
         }
         $(this).css('backgroundColor', getRandomColor())
-    }, function() { $(this).css('backgroundColor', '#000')});
+    }, function() {
+        $(this).css('backgroundColor', '#000')
+    });
     //所有的a标签的透明效果
     $('a').hover(function() {
-        starMove(this, 'opacity', 100);
+        $(this).animate({
+            'opacity': '1'
+        }, 300);
+        // starMove(this, 'opacity', 100);
     }, function() {
-        starMove(this, 'opacity', 30);
+        $(this).animate({
+            'opacity': '0.25'
+        }, 300);
+        // starMove(this, 'opacity', 30);
     });
     //starMove函数封装,得到属性
     function getStyle(obj, attr) {
@@ -148,29 +184,41 @@ $(function() {
             return getComputedStyle(obj, false)[attr];
         }
     }
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 200) {
+            $('.toolbar .top').fadeIn();
+        } else {
+            $('.toolbar .top').fadeOut();
+        }
+    });
+    $('.toolbar .top').on('click', function() {
+        $('html body').animate({
+            'scrollTop': 0
+        });
+    });
     //标签的变化
-    function starMove(obj, attr, iTarget) {
-        clearInterval(obj.timer);
-        obj.timer = setInterval(function() {
-            if (attr == 'opacity') {
-                var iCur = parseInt(parseFloat(getStyle(obj, attr)) * 100);
-            } else {
-                var iCur = parseInt(getStyle(obj, attr));
-            }
-            var iSpeed = (iTarget - iCur) / 8;
-            iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
-            if (iTarget == iCur) {
-                clearInterval(obj.timer);
-            } else {
-                if (attr = 'opacity') {
-                    obj.style.filter = 'alpha(opacity:' + (iCur + iSpeed) + ')';
-                    obj.style.opacity = (iCur + iSpeed) / 100;
-                } else {
-                    obj.style[attr] = iCur + iSpeed + 'px';
-                }
-            }
-        }, 30);
-    }
+    // function starMove(obj, attr, iTarget) {
+    //     clearInterval(obj.timer);
+    //     obj.timer = setInterval(function() {
+    //         if (attr == 'opacity') {
+    //             var iCur = parseInt(parseFloat(getStyle(obj, attr)) * 100);
+    //         } else {
+    //             var iCur = parseInt(getStyle(obj, attr));
+    //         }
+    //         var iSpeed = (iTarget - iCur) / 8;
+    //         iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+    //         if (iTarget == iCur) {
+    //             clearInterval(obj.timer);
+    //         } else {
+    //             if (attr = 'opacity') {
+    //                 obj.style.filter = 'alpha(opacity:' + (iCur + iSpeed) + ')';
+    //                 obj.style.opacity = (iCur + iSpeed) / 100;
+    //             } else {
+    //                 obj.style[attr] = iCur + iSpeed + 'px';
+    //             }
+    //         }
+    //     }, 30);
+    // }
 });
 </script>
 
