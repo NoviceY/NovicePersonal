@@ -27,7 +27,16 @@
         height: 90px;
         overflow: hidden;
     }
-    
+    #gunbootom {
+        font: 16px/20px "宋体";
+        width: 100px;
+        margin: 50px;
+        height: 20px;
+        overflow: hidden;
+    }
+    #gunbootom .news1{
+        margin-top: -20px;
+    }
     #gunLeft {
         overflow: hidden;
         padding: 0;
@@ -82,6 +91,15 @@
             <li>公共5</li>
         </ul>
     </div>
+    <div id="gunbootom">
+        <ul class="news1">
+            <li><img src="img/5.png" alt=""></li>
+            <li>公共2</li>
+            <li>公共3</li>
+            <li>公共4</li>
+            <li>公共5</li>
+        </ul>
+    </div>
     <div id="gunLeft">
         <ul class="news2 clearfix">
             <li class="class11"></li>
@@ -93,7 +111,26 @@
 </body>
 <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-$(function() {
+(function(){
+    var $wrap = $('#gunbootom .news1');    
+    var $timer = null; 
+    var $li1 = $wrap.find('li:last').clone();
+    $li1.prependTo($wrap);
+    $wrap.hover(function() {
+        clearInterval($timer);    
+    }, function() {
+        $timer = setInterval(function() {
+                var $field = $wrap.find('li:last'); 
+                var $h = $field.height();
+                $field.animate({
+                    'marginBottom': $h + 'px'
+                }, 600, function() {    
+                    $field.css('marginBottom', 0).prependTo($wrap);    
+                })
+            }, 600)   
+    }).trigger('mouseleave'); 
+})();
+(function(){
     //公告无缝滚动
     var $wrap = $('#gunTop .news1'); //定义滚动区域    
     var $timer = null; //装定时器的动画   
@@ -112,7 +149,10 @@ $(function() {
                     $field.css('marginTop', 0).appendTo($wrap); //隐藏后,将该行的margin值置零,并插入到最后,实现无缝滚动   
                 })
             }, 600) //滚动间隔时间取决于$interval   
-    }).trigger('mouseleave'); //函数载入时,模拟执行mouseleave,即自动滚动  
+    }).trigger('mouseleave'); //函数载入时,模拟执行mouseleave,即自动滚动
+})();
+$(function() {
+      
     var $left = $('#gunLeft .news2');
     var $timer2 = null;
     // 克隆一个并动态获得宽度赋值

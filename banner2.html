@@ -61,11 +61,22 @@
     .class13 {
         background-color: #aaa
     }
+    
+    #gun {
+        margin-top: 100px;
+        height: 40px;
+        overflow: hidden;
+        position: relative;
+    }
+    #gun .updown_bar {
+        position: absolute;
+        top: -50px;
+    }
     </style>
 </head>
 
 <body>
-<p>还是有问题</p>
+    <p>还是有问题</p>
     <div id="gunLeft">
         <ul class="news2 clearfix">
             <li class="class11"></li>
@@ -74,9 +85,34 @@
             <li class="class14"></li>
         </ul>
     </div>
+    <div id="gun">
+        <ul class="updown_bar clearfix">
+            <li class="">11</li>
+            <li class="">22</li>
+            <li class="">33</li>
+            <li class="">44</li>
+        </ul>
+    </div>
 </body>
 <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+(function() {
+    $('#gun').hover(function() {
+        clearInterval($timer2);
+    }, function() {
+        var $Height = parseInt($('.updown_bar li').css('height'));
+        $timer2 = setInterval(function() {
+            $('.updown_bar').animate({
+                'marginTop': $Height * 2 + 'px'
+            }, 1000, function() {
+                $(this).css({
+                    'marginTop': 0
+                }).find('li:last').prependTo($('.updown_bar'));
+            })
+        }, 1000)
+    }).trigger('mouseleave');
+
+})();
 $(function() {
     var $left = $('#gunLeft .news2');
     var $timer2 = null;
@@ -95,7 +131,7 @@ $(function() {
             if (Math.abs(l) > (w / 2) - $l) {
                 $left.css('left', 0);
             } else {
-               $left.get(0).style.left=$left.get(0).offsetLeft+speed+'px';
+                $left.get(0).style.left = $left.get(0).offsetLeft + speed + 'px';
             }
         }, 30)
     }).trigger('mouseleave');

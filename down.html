@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="json3.txt" download>file</a>
+    <br>
+    <!-- .平时比较常见的有 txt、png、jpg、zip、tar 等各种文件格式 文件可以直接通过文件所在地址下载 -->
+    <a href="json3.rar">点击下载文件</a>
+    <a href="img/5.png" download="">点击下载图片</a>
+    <div>
+        <a href="javascript:void(0);" onClick = "downloadFile('5.png')" >点击下载文件</a>
+        <br />
+        <br />
+        <a href="javascript:void(0);">点击下载文件</a>
+        <br />
+        <br />
+    </div>
+</body>
+<script type="text/javascript">
+function downloadFile(url) {
+    try {
+        var elemIF = document.createElement("iframe");
+        elemIF.src = url;
+        elemIF.style.display = "none";
+        document.body.appendChild(elemIF);
+    } catch (e) {
+    }
+}
+</script>
+
+</html>

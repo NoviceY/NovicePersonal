@@ -93,6 +93,8 @@ article {
     float: left;
     text-align: center;
     behavior: url(ie-css3.htc);
+    -moz- border-radius: 50%;
+    -webkit- border-radius: 50%;
     border-radius: 50%;
     background-color: #000;
 }
@@ -211,12 +213,19 @@ footer div {
     -moz-transition: all .5s;
     -ms-transition: all .5s;
 }
-.toolbar-item:hover .toolbar-item-weixin,.toolbar-item-qq {
+
+.toolbar-item:hover .toolbar-item-weixin,
+.toolbar-item-qq {
     opacity: 1;
     filter: alpha(opacity=100);
+    transform: scale(1);
+    -moz- transform: scale(1);
+    display: block;
 }
+
 .toolbar-item-weixin,
 .toolbar-item-qq {
+    display: none;
     position: absolute;
     width: 283px;
     height: 238px;
@@ -225,23 +234,33 @@ footer div {
     text-align: center;
     z-index: 10;
     background-color: #ccc;
+    transform: scale(0);
+    -moz- transform: scale(0);
+    transform-origin: bottom right;
     opacity: 0;
-    filter: alpha(opacity=0)
+    filter: alpha(opacity=0);
+    transition: all .5s;
+    -moz-transition: all .5s;
 }
-.toolbar .top{display: none;}
+
+.toolbar .top {
+    display: none;
+}
+
 .toolbar-item-weixin {
     background-image: url(../img/wx.png);
 }
-.toolbar-item-weixin:after{
+
+.toolbar-item-weixin:after {
     content: '';
     display: block;
-     width: 0px;
+    width: 0px;
     height: 0px;
     overflow: hidden;
     border-width: 10px;
-    border-color: transparent transparent transparent #ccc ;
-    border-style: solid dashed dashed  dashed;
+    border-color: transparent transparent transparent #ccc;
+    border-style: solid dashed dashed dashed;
     position: absolute;
     right: 0;
-    bottom:5%;
+    bottom: 5%;
 }

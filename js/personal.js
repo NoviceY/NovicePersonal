@@ -120,7 +120,6 @@
 	        run();
 	        setTimeout(function() { $wrap.one('mousewheel', mouse_) }, 1000)
 	    };
-
 	    /*响应键盘上下键*/
 	    $(document).one('keydown', k);
 
@@ -139,5 +138,33 @@
 	        };
 	        setTimeout(function() { $(document).one('keydown', k) }, 1000);
 	    }
-
+	    progress('.progress');
+	    function progress(el) {
+	        var $w = $(el);
+	        var $div = $(el + ' .progress-bar');
+	        $.ajax({
+	            url: "json3.txt",
+	            type: "GET",
+	            data: {},
+	            datatype: 'json',
+	        }).done(function(data) {
+	            // alert(data);
+	            // JSON.parse('{"1": 1, "2": 2, "3": {"4": 4, "5": {"6": 6}}}', function(k, v) {
+	            //     console.log(k); // 输出当前属性，最后一个为 ""
+	            //     return v; // 返回修改的值
+	            // });
+	            var width = parseInt($w.css('width'));
+	            var data = JSON.parse(data);
+	            // $w = parseFloat(data.width) / 100 * width;
+	            var i = 0;
+	            for (key in data) {
+	                // 对json数据进行循环输出，因为没调整，所有是按顺序来的
+	                $w[i] = parseFloat(data[key]) / 100 * width;
+	                // console.log(data[key]);
+	                $div[i].style.width = $w[i] + 'px';
+	                $div[i].innerHTML = data[key];
+	                i++;
+	            }
+	        });
+	    }
 	});
